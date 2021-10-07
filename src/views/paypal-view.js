@@ -5,8 +5,8 @@ let buttons;
 let hasRendered = false;
 
 class PaypalElement extends LitElement {
-  _attachDom(dom) {
-    this.appendChild(dom);
+  createRenderRoot() {
+    return this;
   }
 
   static get properties() {
@@ -129,7 +129,6 @@ class PaypalElement extends LitElement {
         return;
       });
 
-    this._attachDom(this.shadowRoot.getElementById("textPassword"));
   }
 
   // outside updates shadow element
