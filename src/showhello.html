@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script>
+      customElements.define(
+        "show-hello",
+        class extends HTMLElement {
+          connectedCallback() {
+            const shadow = this.attachShadow({ mode: "open" });
+            shadow.innerHTML = `<p>
+    <button onclick="addTodo()">Click me</button>
+    <div id="myId" value="map value">map value 2</div>
+      Hello, ${this.getAttribute("name")}
+    </p>`;
+          }
+        }
+      );
+
+      function addTodo() {
+        showhello.shadowRoot.querySelector("#myId").textContent =
+          "querySelector testing";
+      }
+    </script>
+
+    <show-hello id="showhello" name="John"></show-hello>
+  </body>
+</html>
